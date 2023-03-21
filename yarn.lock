@@ -47,6 +47,11 @@
   "resolved" "https://registry.npmmirror.com/@types/estree/-/estree-1.0.0.tgz"
   "version" "1.0.0"
 
+"@types/qs@^6.9.7":
+  "integrity" "sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw=="
+  "resolved" "https://registry.npmmirror.com/@types/qs/-/qs-6.9.7.tgz"
+  "version" "6.9.7"
+
 "@vant/icons@^1.8.0":
   "integrity" "sha512-sKfEUo2/CkQFuERxvkuF6mGQZDKu3IQdj5rV9Fm0weJXtchDSSQ+zt8qPCNUEhh9Y8shy5PzxbvAfOOkCwlCXg=="
   "resolved" "https://registry.npmmirror.com/@vant/icons/-/icons-1.8.0.tgz"

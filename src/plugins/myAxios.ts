@@ -16,6 +16,7 @@ const myAxios: AxiosInstance = axios.create({
 myAxios.interceptors.request.use(function (config) {
     console.log("我要发请求了",config)
     // Do something before request is sent
+
     return config;
 }, function (error) {
     // Do something with request error
@@ -26,6 +27,11 @@ myAxios.interceptors.request.use(function (config) {
 myAxios.interceptors.response.use(function (response) {
     console.log("我收到你的响应了",response)
     // Do something with response data
+    // 未登录则跳转到登录页
+    if (response?.data?.code === 40100) {
+        const redirectUrl = window.location.href;
+        window.location.href = `/user/login?redirect=${redirectUrl}`;
+    }
     return response.data;
 }, function (error) {
     // Do something with response error

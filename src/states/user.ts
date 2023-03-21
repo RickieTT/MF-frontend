@@ -1,15 +1,16 @@
 import {UserType} from "../models/user";
 
-let currentUser: UserType;
+let currentUser: UserType|null;
 
 
-const setCurrentUserState = (user:UserType) => {
+const setCurrentUserState = (user: UserType|null) => {
     currentUser = user;
 }
 
-const getCurrentUserState = () :UserType => {
+const getCurrentUserState = (): UserType|null => {
     return currentUser;
 }
+
 
 export {
     setCurrentUserState,

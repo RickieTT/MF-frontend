@@ -26,12 +26,13 @@
 </template>
 
 <script setup lang="ts">
-import {useRouter} from "vue-router";
+import {useRoute,useRouter} from "vue-router";
 import {ref} from "vue";
 import myAxios from "../plugins/myAxios";
 import {Toast} from "vant";
 
 const router = useRouter();
+const route = useRoute();
 
 const userAccount = ref('');
 const userPassword = ref('');
@@ -45,7 +46,10 @@ const onSubmit = async () => {
   if (res.code === 0 && res.data){
     Toast.success('登录成功');
     //replace是代表现在的用户界面会把之前的历史界面给替换掉 点击后退就不会再回到登录页面了
-    router.replace('/');
+    // router.replace('/');
+    const redirectUrl = route.query?.redirect as string ?? '/';
+    window.location.href = redirectUrl;
+
   }else {
     Toast.fail('登录失败');
   }

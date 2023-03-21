@@ -19,42 +19,57 @@ import {useRoute, useRouter} from "vue-router";
 import {onMounted, ref} from "vue";
 import myAxios from "../plugins/myAxios";
 import {Toast} from "vant";
-import {getCurrentUser} from "../service/user";
+import {removeCurrentUser} from "../service/user";
 
 
 const router = useRouter();
 const route = useRoute();
 
 const editUser = ref({
-  editKey: route.query.editKey,
-  editName: route.query.editName,
-  currentValue: route.query.currentValue,
+  id: history.state.id,
+  editKey: history.state.editKey,
+  editName: history.state.editName,
+  currentValue: history.state.currentValue,
 })
 
-const currentUser= getCurrentUser();
+onMounted(async() =>{
+  console.log(history.state)
+})
 
 
 const onSubmit = async () => {
-  if (!currentUser){
+  if (!editUser || !editUser.value.id){
     Toast.fail('用户未登录');
     return;
   }
-  
-  const res = await myAxios.post('/user/update',{
-    'id': currentUser.id,
-    //这里报错不影响 用[]包起来是说明这是个变量 这样可以动态生成键 这里用as string
-    [editUser.value.editKey as string]: editUser.value.currentValue,
 
+  const res = await myAxios.post('/user/update',{
+    //这里报错不影响 用[]包起来是说明这是个变量 这样可以动态生成键 这里用as string
+    id: editUser.value.id,
+    [editUser.value.editKey as string]: editUser.value.currentValue,
   })
+
+  // if (res.status==200 && res.data.code === 0 && res.data > 0){
   if (res.code === 0 && res.data > 0){
     Toast.success('修改成功');
     //返回之前页面 当然也可以保留 但是保留的话要记得把表单项给清空
+
+    removeCurrentUser();
     router.back();
   }else {
     Toast.fail('修改错误');
   }
-  // todo 把editKey editName currentValue提交到后台
 
+  //     .then(res=>{
+  //   if (res.status==200 && res.data.code === 0 && res.data > 0){
+  //     Toast.success('修改成功');
+  //     //返回之前页面 当然也可以保留 但是保留的话要记得把表单项给清空
+  //     router.back();
+  //   }else {
+  //     Toast.fail('修改错误');
+  //   }
+  // })
+  // todo 把editKey editName currentValue提交到后台
 }
 
 </script>
