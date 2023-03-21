@@ -18,6 +18,7 @@ declare module '@vue/runtime-core' {
     VanCellGroup: typeof import('vant/es')['CellGroup']
     VanCollapse: typeof import('vant/es')['Collapse']
     VanCollapseItem: typeof import('vant/es')['CollapseItem']
+    VanDatePicker: typeof import('vant/es')['DatePicker']
     VanDatetimePicker: typeof import('vant/es')['DatetimePicker']
     VanDialog: typeof import('vant/es')['Dialog']
     VanDivider: typeof import('vant/es')['Divider']
@@ -39,6 +40,7 @@ declare module '@vue/runtime-core' {
     VanTabbarItem: typeof import('vant/es')['TabbarItem']
     VanTabs: typeof import('vant/es')['Tabs']
     VanTag: typeof import('vant/es')['Tag']
+    VanTimePicker: typeof import('vant/es')['TimePicker']
     VanTreeSelect: typeof import('vant/es')['TreeSelect']
   }
 }

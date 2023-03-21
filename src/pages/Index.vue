@@ -11,7 +11,7 @@
 
 <script setup lang="ts">
 import {ref, watchEffect} from 'vue';
-import {Toast} from 'vant';
+import { showSuccessToast, showFailToast} from 'vant';
 import myAxios from "../plugins/myAxios";
 import UserCardList from "../components/UserCardList.vue";
 import {UserType} from "../models/user";
@@ -42,7 +42,7 @@ const loadData = async () => {
         })
         .catch(function (error) {
           console.error('/user/match error', error);
-          Toast.fail('请求失败');
+          showFailToast('请求失败');
         })
   } else {
     // 普通模式，直接分页查询用户
@@ -58,7 +58,7 @@ const loadData = async () => {
         })
         .catch(function (error) {
           console.error('/user/recommend error', error);
-          Toast.fail('请求失败');
+          showFailToast('请求失败');
         })
   }
   if (userListData) {

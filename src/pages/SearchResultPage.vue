@@ -20,7 +20,7 @@
 
 <script setup>
 import {onMounted, ref} from 'vue';
-import {Toast} from 'vant';
+import { showSuccessToast, showFailToast} from 'vant';
 import {useRoute} from "vue-router";
 import myAxios from "../plugins/myAxios.ts";
 //一个查询字符串的解析器 (query string)
@@ -50,13 +50,13 @@ onMounted(async() => {
   })
       .then(function (response) {
         console.log('/user/search/tags succeed', response);
-        Toast.success('请求成功');
+        showSuccessToast('请求成功');
         console.log(response.data);
         return response?.data;
       })
       .catch(function (error) {
         console.error('/user/search/tags error',error);
-        Toast.fail('请求失败');
+        showFailToast('请求失败');
       })
   if (userListData){
     userListData.forEach(user => {

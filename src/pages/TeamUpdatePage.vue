@@ -26,7 +26,7 @@
             @click="showPicker = true"
         />
         <van-popup v-model:show="showPicker" position="bottom">
-          <van-datetime-picker
+          <van-date-picker
               v-model="addTeamData.expireTime"
               @confirm="showPicker = false"
               type="datetime"
@@ -67,7 +67,7 @@
 import {useRoute, useRouter} from "vue-router";
 import {onMounted, ref} from "vue";
 import myAxios from "../plugins/myAxios";
-import {Toast} from "vant";
+import { showSuccessToast, showFailToast} from "vant";
 const route = useRoute();
 
 
@@ -96,7 +96,7 @@ onMounted(async () => {
   if (res?.code === 0) {
     addTeamData.value = res.data;
   } else {
-    Toast.fail('加载队伍失败，请刷新重试');
+    showFailToast('加载队伍失败，请刷新重试');
   }}
 )
 
@@ -110,13 +110,13 @@ const onSubmit = async () => {
   // todo 前端参数校验
   const res = await myAxios.post("/team/update", postData);
   if (res?.code === 0 && res.data){
-    Toast.success('更新成功');
+    showSuccessToast('更新成功');
     router.push({
       path: '/team',
       replace: true,
     });
   } else {
-    Toast.success('更新失败');
+    showSuccessToast('更新失败');
   }
 }
 

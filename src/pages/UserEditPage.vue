@@ -18,7 +18,7 @@
 import {useRoute, useRouter} from "vue-router";
 import {onMounted, ref} from "vue";
 import myAxios from "../plugins/myAxios";
-import {Toast} from "vant";
+import { showSuccessToast, showFailToast} from "vant";
 import {removeCurrentUser} from "../service/user";
 
 
@@ -39,7 +39,7 @@ onMounted(async() =>{
 
 const onSubmit = async () => {
   if (!editUser || !editUser.value.id){
-    Toast.fail('用户未登录');
+    showFailToast('用户未登录');
     return;
   }
 
@@ -51,13 +51,13 @@ const onSubmit = async () => {
 
   // if (res.status==200 && res.data.code === 0 && res.data > 0){
   if (res.code === 0 && res.data > 0){
-    Toast.success('修改成功');
+    showSuccessToast('修改成功');
     //返回之前页面 当然也可以保留 但是保留的话要记得把表单项给清空
 
     removeCurrentUser();
     router.back();
   }else {
-    Toast.fail('修改错误');
+    showFailToast('修改错误');
   }
 
   //     .then(res=>{

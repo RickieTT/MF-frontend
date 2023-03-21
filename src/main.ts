@@ -4,10 +4,10 @@ import App from './App.vue'
 // 2. 引入组件样式
 import 'vant/lib/index.css';
 import { Button, NavBar,Icon,Tabbar, TabbarItem,Col, Row ,Dialog  } from 'vant';
-import { Tag } from 'vant';
+// import { Tag } from 'vant';
 import * as VueRouter from 'vue-router';
 import routes from "./config/route";
-import { Empty } from 'vant';
+import { Toast } from 'vant';
 import '../global.css';
 
 
@@ -16,16 +16,16 @@ import '../global.css';
 
 const app =createApp(App)
 // 好像不需要引入
-app.use(NavBar);
-app.use(Button);
-app.use(Icon);
-app.use(Tabbar);
-app.use(TabbarItem);
-app.use(Col);
-app.use(Row);
-app.use(Tag);
-app.use(Empty);
-app.use(Dialog);
+app.use(Toast);
+// app.use(Button);
+// app.use(Icon);
+// app.use(Tabbar);
+// app.use(TabbarItem);
+// app.use(Col);
+// app.use(Row);
+// app.use(Tag);
+// app.use(Empty);
+// app.use(Dialog);
 
 
 // 3. 创建路由实例并传递 `routes` 配置

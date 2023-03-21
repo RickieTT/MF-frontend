@@ -26,7 +26,7 @@
             @click="showPicker = true"
         />
         <van-popup v-model:show="showPicker" position="bottom">
-          <van-datetime-picker
+          <van-date-picker
               v-model="addTeamData.expireTime"
               @confirm="showPicker = false"
               type="datetime"
@@ -72,7 +72,7 @@
 import {useRouter} from "vue-router";
 import {onMounted, ref} from "vue";
 import myAxios from "../plugins/myAxios";
-import {Toast} from "vant";
+import { showSuccessToast, showFailToast} from "vant";
 
 
 const  router = useRouter();
@@ -108,7 +108,7 @@ const onSubmit = async () => {
       replace: true,
     });
   } else {
-    Toast.success('添加失败');
+    showSuccessToast('添加失败');
   }
 }
 

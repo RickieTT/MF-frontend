@@ -23,7 +23,7 @@
 
 <script setup>
 
-import {Toast} from 'vant';
+import {showToast} from 'vant';
 import {useRouter} from "vue-router";
 import {ref} from "vue";
 
@@ -55,7 +55,7 @@ const onClickRight = () => {
 }
 
 // const active = ref("index");
-const onChange = (index) => Toast(`标签 ${index}`);
+const onChange = (index) => showToast(`标签 ${index}`);
 
 </script>
 

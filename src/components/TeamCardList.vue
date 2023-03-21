@@ -1,7 +1,5 @@
 <template>
-  <div
-      id="teamCardList"
-  >
+  <div id="teamCardList" >
     <van-card
         v-for="team in props.teamList"
         :desc="team.description"
@@ -44,7 +42,7 @@
       </template>
     </van-card>
 <!--    <van-dialog v-model:show="showPasswordDialog" title="请输入密码" show-cancel-button @confirm="doJoinTeam" @cancel="doJoinCancel">-->
-    <van-dialog v-model:show="showPasswordDialog" title="请输入密码" show-cancel-button>
+    <van-dialog v-model:show="showPasswordDialog" title="请输入密码" show-cancel-button >
       <van-field v-model="password" placeholder="请输入密码"/>
     </van-dialog>
   </div>
@@ -56,7 +54,6 @@ import {TeamType} from "../models/team";
 import {teamStatusEnum} from "../constants/team";
 import leiguanwang from "../assets/leiguanwang.png"
 import myAxios from "../plugins/myAxios";
-import {Dialog,Toast} from "vant";
 import {getCurrentUserState} from "../states/user";
 import {onMounted, ref} from "vue";
 import {getCurrentUser} from "../service/user";
